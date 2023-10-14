@@ -10,7 +10,7 @@ export const YOUTUBE_VIDEO_API =
 //  const CHANNEL_DETAILS_API = 'https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&channelId=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY]'
 
 export const YOUTUBE_SEARCH_API =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 const for_SPECIFIC_SEARCH = //just need to change the videoCategoryId like 10 is for music,etc.
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=10&key=AIzaSyDOEA03JD-U7oRFGcH_Wtcj6q6rcxKdGtw";
