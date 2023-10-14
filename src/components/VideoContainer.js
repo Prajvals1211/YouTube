@@ -11,12 +11,12 @@ import Loader from "../utils/loadContext";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
-  const [nextPageToken, setNextPageToken] = useState("");
+ // const [nextPageToken, setNextPageToken] = useState("");
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const [search] = useSearchParams();
   const [Loading, setLoading] = useContext(Loader);
   let search1 = search?.get("v");
-  const navTo = useSelector((store) => store.chat.LoginToPage);
+  //const navTo = useSelector((store) => store.chat.LoginToPage);
 
   const dispatch = useDispatch();
   const videoCache = useSelector((store) => store.video);
