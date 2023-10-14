@@ -1,8 +1,8 @@
 import React from "react";
 
 const SearchVideo = ({ info, flag }) => {
-  const { snippet, statistics } = info;
-  const { thumbnails, title, channelTitle, publishedAt } = snippet;
+  const { snippet } = info;
+  const { thumbnails, title, channelTitle } = snippet;
   return (
     // <div className="w-[500px]">
     //   <div className="flex items-center ml-72" >
