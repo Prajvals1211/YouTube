@@ -5,10 +5,10 @@ import { Link, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY } from "../utils/constants";
 import { useSelector } from "react-redux";
 import SearchVideo from "./SearchVideo";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 import { videoStore } from "../utils/videoSlice";
 import CommentsShow from "./CommentsShow";
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+// import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { SuggestShimmer } from "./Shimmer";
 
 import DetailVideo from "./DetailVideo";
@@ -51,7 +51,7 @@ const WatchPage = () => {
   }, [search]);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const getVideoDetail = async () => {
-    setLoading(true)
+    setLoading(true);
     const videoDetails = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?key=${GOOGLE_API_KEY}&part=snippet,statistics&id=${search.get(
         "v"
@@ -128,7 +128,7 @@ const WatchPage = () => {
       );
     }
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
     }, 2000);
   };
 
@@ -222,20 +222,18 @@ const WatchPage = () => {
             <LiveChat />
           </div>
         )}
-        {!suggestVdos.length ? (
-          <SuggestShimmer />
-        ) : (
-          <div className="pl-[70rem] pt-2">
-            {suggestVdos?.map((suggest) => (
-              <Link
-                to={"/watch?v=" + suggest.id.videoId}
-                key={suggest.id.videoId}
-              >
-                <SearchVideo info={suggest} flag={"X"} />
-              </Link>
-            ))}
-          </div>
-        )}
+
+        <div className="pl-[70rem] pt-2">
+          {!suggestVdos.length && <SuggestShimmer />}
+          {suggestVdos?.map((suggest) => (
+            <Link
+              to={"/watch?v=" + suggest.id.videoId}
+              key={suggest.id.videoId}
+            >
+              <SearchVideo info={suggest} flag={"X"} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
