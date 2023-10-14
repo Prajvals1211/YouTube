@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addLoginName, addMessage, addName } from "../utils/chatSlice";
+import { addLoginName, addMessage } from "../utils/chatSlice";
 import ChatMessage from "./ChatMessage";
 import { generateRandomName, generateString } from "../utils/useCase";
 import { LoginName } from "../utils/loadContext";
