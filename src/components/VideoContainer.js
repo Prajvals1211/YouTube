@@ -11,12 +11,12 @@ import Loader from "../utils/loadContext";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
- // const [nextPageToken, setNextPageToken] = useState("");
+  // const [nextPageToken, setNextPageToken] = useState("");
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const [search] = useSearchParams();
   const [Loading, setLoading] = useContext(Loader);
   let search1 = search?.get("v");
-  //const navTo = useSelector((store) => store.chat.LoginToPage);
+  // const navTo = useSelector((store) => store.chat.LoginToPage);
 
   const dispatch = useDispatch();
   const videoCache = useSelector((store) => store.video);
@@ -99,23 +99,21 @@ const VideoContainer = () => {
 
   return (
     //`flex flex-wrap cursor-pointer  ${isMenuOpen ? 'ml-[2rem]': 'ml-[8rem]'}`
-    !videos.length ? (
-      <Shimmer />
-    ) : (
-      <div
-        className={`flex flex-wrap cursor-pointer  ${
-          isMenuOpen ? "ml-[13rem]" : "ml-[11rem]"
-        }`}
-      >
-        {videos?.map((e) => {
-          return (
-            <Link to={"/watch?v=" + e.id} key={e.id}>
-              <VideoCard info={e} />
-            </Link>
-          );
-        })}
-      </div>
-    )
+
+    <div
+      className={`flex flex-wrap cursor-pointer  ${
+        isMenuOpen ? "ml-[13rem]" : "ml-[11rem]"
+      }`}
+    >
+      {!videos.length && <Shimmer />}
+      {videos?.map((e) => {
+        return (
+          <Link to={"/watch?v=" + e.id} key={e.id}>
+            <VideoCard info={e} />
+          </Link>
+        );
+      })}
+    </div>
   );
 };
 
