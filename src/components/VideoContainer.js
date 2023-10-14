@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 import { LIVE_STREAMS, YOUTUBE_VIDEO_API } from "../utils/constants";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { videoStore } from "../utils/videoSlice";
