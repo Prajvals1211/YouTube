@@ -8,9 +8,9 @@ export const Shimmer = () => {
           .fill("")
           .map((e, i) => {
             return (
-              <div className="">
+              <div key={i}>
                 <div
-                  key={i}
+                  
                   className="w-[295px] p-2 m-2 h-44 bg-gray-200 rounded flex flex-wrap"
                 ></div>
                 <div>
@@ -46,5 +46,11 @@ export const SuggestShimmer = () => {
           return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>;
         })}
     </div>
+  );
+};
+
+export const WatchPageShimmer = () => {
+  return (
+    <div className="w-full h-full relative overflow-hidden z-0 outline-0 bg-gray-300"></div>
   );
 };
