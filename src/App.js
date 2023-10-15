@@ -5,11 +5,12 @@ import Header from "./components/Header";
 import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Maincontainer from "./components/Maincontainer";
-import WatchPage from "./components/WatchPage";
 import SearchPage from "./components/SearchPage";
 import Loader, { LoginName } from "./utils/loadContext";
-import { useState } from "react";
-import LoginPage from "./components/LoginPage";
+import { Suspense, lazy, useState } from "react";
+import { Shimmer, WatchPageShimmer } from "./components/Shimmer";
+const WatchPage = lazy(() => import("./components/WatchPage"));
+const LoginPage = lazy(() => import("./components/LoginPage"));
 
 const appRouter = createBrowserRouter([
   {
@@ -18,7 +19,6 @@ const appRouter = createBrowserRouter([
       <div>
         <Header />
         <Body />
-       
       </div>
     ),
     children: [
@@ -28,7 +28,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/watch",
-        element: <WatchPage />,
+        element: (
+          <Suspense fallback={<WatchPageShimmer />}>
+            <WatchPage />
+          </Suspense>
+        ),
       },
       {
         path: "/search/:id",
@@ -37,26 +41,30 @@ const appRouter = createBrowserRouter([
     ],
   },
   {
-    path : '/login',
-    element : <LoginPage/>
-  }
+    path: "/login",
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <LoginPage />
+      </Suspense>
+    ),
+  },
 ]);
 
 function App() {
   const [Loading, setLoading] = useState(true);
-  const [name,setName] = useState('');
+  const [name, setName] = useState("");
   return (
     <Provider store={store}>
-      <LoginName.Provider value={[name,setName]}>
-      <Loader.Provider value={[Loading, setLoading]}>
-        <div className="">
-          {/* <Header /> */}
+      <LoginName.Provider value={[name, setName]}>
+        <Loader.Provider value={[Loading, setLoading]}>
+          <div className="">
+            {/* <Header /> */}
 
-          <RouterProvider router={appRouter} /> 
+            <RouterProvider router={appRouter} />
 
-          {/* <Body /> */}
-        </div>
-      </Loader.Provider>
+            {/* <Body /> */}
+          </div>
+        </Loader.Provider>
       </LoginName.Provider>
     </Provider>
   );
