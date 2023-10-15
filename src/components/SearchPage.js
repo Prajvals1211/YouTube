@@ -18,7 +18,7 @@ const SearchPage = () => {
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${id}%2023&key=${GOOGLE_API_KEY}`
     );
     const data = await searchData.json();
-     console.log(data.items);
+     // console.log(data.items);
     setSearchList(data.items);
   };
 
