@@ -5,12 +5,16 @@ import Header from "./components/Header";
 import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Maincontainer from "./components/Maincontainer";
-import SearchPage from "./components/SearchPage";
 import Loader, { LoginName } from "./utils/loadContext";
 import { Suspense, lazy, useState } from "react";
-import { Shimmer, WatchPageShimmer } from "./components/Shimmer";
+import {
+  Shimmer,
+  SuggestShimmer,
+  WatchPageShimmer,
+} from "./components/Shimmer";
 const WatchPage = lazy(() => import("./components/WatchPage"));
 const LoginPage = lazy(() => import("./components/LoginPage"));
+const SearchPage = lazy(() => import("./components/SearchPage"));
 
 const appRouter = createBrowserRouter([
   {
@@ -36,7 +40,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/search/:id",
-        element: <SearchPage />,
+        element: (
+          <Suspense fallback={<SuggestShimmer />}>
+            <SearchPage />
+          </Suspense>
+        ),
       },
     ],
   },
