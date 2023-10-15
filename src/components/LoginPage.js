@@ -13,7 +13,9 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white w-96 p-8 rounded-lg shadow-lg">
-        <ImYoutube2 className="text-red-500 text-6xl mb-6" />
+       <a href="/">
+          <ImYoutube2 className="text-red-500 text-6xl mb-6" />
+        </a>
 
         <form
           className="text-center"
