@@ -161,54 +161,6 @@ const WatchPage = () => {
                 comments.map((data) => (
                   <div>
                     <CommentsShow info={data} key={data.id} />
-                    {/* {data?.replies ? (
-                    <>
-                      {!replies && data.snippet.totalReplyCount > 0 ? (
-                        <button
-                          className="text-blue-600 flex ml-20"
-                          onClick={(oEvent) => toggleBtn(oEvent)}
-                        >
-                          <span className="pt-1 pr-1">
-                            {" "}
-                            <AiFillCaretDown />{" "}
-                          </span>
-                          {data.replies.comments.length === 1 ? (
-                            <span>{data?.replies?.comments?.length} reply</span>
-                          ) : (
-                            <span>
-                              {data?.replies?.comments?.length} replies
-                            </span>
-                          )}
-                        </button>
-                      ) : (
-                        <button
-                          className="text-blue-600 flex ml-20"
-                          onClick={() => {
-                            setReplies(false);
-                          }}
-                        >
-                          <span className="pt-1 pr-1">
-                            {" "}
-                            <AiFillCaretUp />{" "}
-                          </span>{" "}
-                          {data.replies.comments.length === 1 ? (
-                            <span>{data?.replies?.comments?.length} reply</span>
-                          ) : (
-                            <span>
-                              {data?.replies?.comments?.length} replies
-                            </span>
-                          )}
-                        </button>
-                      )}
-                      {replies && (
-                        <div className="pl-5 ml-10 border border-l-black">
-                          {data.replies.comments.map((data1) => (
-                            <>{<CommentsShow info={data1} key={data1.id} />}</>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : null} */}
                   </div>
                 ))}
             </div>
