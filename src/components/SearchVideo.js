@@ -4,13 +4,6 @@ const SearchVideo = ({ info, flag }) => {
   const { snippet } = info;
   const { thumbnails, title, channelTitle } = snippet;
   return (
-    // <div className="w-[500px]">
-    //   <div className="flex items-center ml-72" >
-    //   <img className="rounded-lg mx-auto" alt="thumbnail" src={thumbnails.medium.url} />
-    //     <p className="font-bold py-2">{title}</p>
-    //     <p className="font-mono">{channelTitle}</p>
-    //   </div>
-    // </div>
     <div
       className={`${
         flag === "X" ? "w-[350px] relative overflow-hidden" : "w-[500px]"
