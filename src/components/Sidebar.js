@@ -1,4 +1,3 @@
-
 import { useSelector } from "react-redux";
 import { AiFillHome, AiOutlineFlag, AiFillFire } from "react-icons/ai";
 import { BsBroadcast } from "react-icons/bs";
@@ -155,6 +154,20 @@ const SidebarVisibilty = ({ icons, visibilty }) => {
                 />
               </li>
             </Link>
+            <Link to="/?v=live">
+              <li
+                className={`p-1 m-2 rounded-lg hover:bg-gray-100 w-10 ${
+                  visibilty === "live" ? "bg-gray-100" : ""
+                }`}
+              >
+                <BsBroadcast
+                  style={{
+                    margin: "2px",
+                    fontSize: "25px",
+                  }}
+                />
+              </li>
+            </Link>
             <Link to="/?v=10">
               <li
                 className={`p-1 m-2 rounded-lg hover:bg-gray-100 w-10 ${
@@ -225,20 +238,7 @@ const SidebarVisibilty = ({ icons, visibilty }) => {
                 />
               </li>
             </Link>
-            <Link to="/?v=live">
-              <li
-                className={`p-1 m-2 rounded-lg hover:bg-gray-100 w-10 ${
-                  visibilty === "live" ? "bg-gray-100" : ""
-                }`}
-              >
-                <BsBroadcast
-                  style={{
-                    margin: "2px",
-                    fontSize: "25px",
-                  }}
-                />
-              </li>
-            </Link>
+           
           </ul>
           <div className="w-10 m-2 border border-b-gray-400 "></div>
           <ul className="">
