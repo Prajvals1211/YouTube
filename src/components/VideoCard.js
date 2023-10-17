@@ -5,7 +5,7 @@ import {
   timeDuration,
 } from "../utils/useCase";
 
-const VideoCard = ({ info }) => {
+const VideoCard = ({ info, live }) => {
   //   console.log(info);
 
   const { snippet, statistics, contentDetails } = info;
@@ -26,9 +26,11 @@ const VideoCard = ({ info }) => {
           alt="thumbnail"
           src={thumbnails.medium.url}
         />
-        <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
-          {duration}
-        </div>
+        {live !== "live" && (
+          <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
+            {duration}
+          </div>
+        )}
       </div>
 
       {/* <span className="">{contentDetails.duration}</span> */}
