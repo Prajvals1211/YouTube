@@ -27,6 +27,7 @@ const WatchPage = () => {
   const [showcomments, setShowComments] = useState(false);
   const [Loading, setLoading] = useContext(Loader);
   const searchName = useSelector((store) => store.chat.searchName);
+  const Theme = useSelector((store) => store.app.Theme);
 
   useEffect(() => {
     dispatch(closeMenu());
@@ -133,11 +134,11 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="flex pt-16 ">
+    <div className={`flex pt-16 ${!Theme && 'bg-black text-white'}`}>
       <div className="relative flex-grow ">
         <div
           className={`absolute px-2 py-3 ${
-            !isMenuOpen ? "ml-[5rem] " : "ml-[5rem]"
+            !isMenuOpen ? "ml-[3rem] " : "ml-[3rem]"
           }`}
         >
           <iframe
@@ -151,8 +152,8 @@ const WatchPage = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
-          <div className="">
-            {videoDetails.length && <DetailVideo info={videoDetails} />}
+          <div className=''>
+            {videoDetails.length && <DetailVideo info={videoDetails} Theme = {Theme} />}
           </div>
           {showcomments && (
             <div>
@@ -160,7 +161,55 @@ const WatchPage = () => {
               {comments.length &&
                 comments.map((data) => (
                   <div>
-                    <CommentsShow info={data} key={data.id} />
+                    <CommentsShow info={data} key={data.id} Theme= {Theme}/>
+                    {/* {data?.replies ? (
+                    <>
+                      {!replies && data.snippet.totalReplyCount > 0 ? (
+                        <button
+                          className="text-blue-600 flex ml-20"
+                          onClick={(oEvent) => toggleBtn(oEvent)}
+                        >
+                          <span className="pt-1 pr-1">
+                            {" "}
+                            <AiFillCaretDown />{" "}
+                          </span>
+                          {data.replies.comments.length === 1 ? (
+                            <span>{data?.replies?.comments?.length} reply</span>
+                          ) : (
+                            <span>
+                              {data?.replies?.comments?.length} replies
+                            </span>
+                          )}
+                        </button>
+                      ) : (
+                        <button
+                          className="text-blue-600 flex ml-20"
+                          onClick={() => {
+                            setReplies(false);
+                          }}
+                        >
+                          <span className="pt-1 pr-1">
+                            {" "}
+                            <AiFillCaretUp />{" "}
+                          </span>{" "}
+                          {data.replies.comments.length === 1 ? (
+                            <span>{data?.replies?.comments?.length} reply</span>
+                          ) : (
+                            <span>
+                              {data?.replies?.comments?.length} replies
+                            </span>
+                          )}
+                        </button>
+                      )}
+                      {replies && (
+                        <div className="pl-5 ml-10 border border-l-black">
+                          {data.replies.comments.map((data1) => (
+                            <>{<CommentsShow info={data1} key={data1.id} />}</>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : null} */}
                   </div>
                 ))}
             </div>
@@ -170,7 +219,7 @@ const WatchPage = () => {
 
       <div className=" ">
         {showlive && (
-          <div className="pl-[70rem] w-full pt-2 mr-1 pr-4">
+          <div className="pl-[68rem] w-full pt-2 mr-1 pr-4">
             <LiveChat />
           </div>
         )}
@@ -182,7 +231,7 @@ const WatchPage = () => {
               to={"/watch?v=" + suggest.id.videoId}
               key={suggest.id.videoId}
             >
-              <SearchVideo info={suggest} flag={"X"} />
+              <SearchVideo info={suggest} flag={"X"} Theme={Theme}/>
             </Link>
           ))}
         </div>
