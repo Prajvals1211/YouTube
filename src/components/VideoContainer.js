@@ -13,6 +13,7 @@ const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   // const [nextPageToken, setNextPageToken] = useState("");
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const Theme = useSelector(store => store.app.Theme)
   const [search] = useSearchParams();
   const [Loading, setLoading] = useContext(Loader);
   let search1 = search?.get("v");
@@ -103,13 +104,13 @@ const VideoContainer = () => {
     <div
       className={`flex flex-wrap cursor-pointer  ${
         isMenuOpen ? "ml-[13rem]" : "ml-[11rem]"
-      }`}
+      } ${!Theme ? " text-white ": ''}`}
     >
       {!videos.length && <Shimmer />}
       {videos?.map((e) => {
         return (
           <Link to={"/watch?v=" + e.id} key={e.id}>
-            <VideoCard info={e} />
+            <VideoCard info={e} live = {search1}/>
           </Link>
         );
       })}
