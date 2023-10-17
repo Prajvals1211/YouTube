@@ -8,6 +8,8 @@ const SearchPage = () => {
   const { id } = useParams();
   const [searchlist, setSearchList] = useState([]);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const Theme = useSelector((store) => store.app.Theme);
+
   
   useEffect(() => {
     getSearchList();
@@ -18,7 +20,7 @@ const SearchPage = () => {
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${id}%2023&key=${GOOGLE_API_KEY}`
     );
     const data = await searchData.json();
-     // console.log(data.items);
+    //  console.log(data.items);
     setSearchList(data.items);
   };
 
@@ -27,7 +29,7 @@ const SearchPage = () => {
       {searchlist &&
         searchlist.map((search) => (
           <Link to={"/watch?v=" + search.id.videoId} key={search.id.videoId}>
-            <SearchVideo info={search} />
+            <SearchVideo info={search} Theme = {Theme}/>
           </Link>
         ))}
       {/* <SearchVideo info={searchlist[0]} /> */}
