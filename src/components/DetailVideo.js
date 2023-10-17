@@ -3,14 +3,14 @@ import { formatNumberWithSuffix } from "../utils/useCase";
 import { PiBellSimpleRingingDuotone } from "react-icons/pi";
 import { BiLike, BiSolidLike, BiDislike, BiSolidDislike } from "react-icons/bi";
 
-const DetailVideo = ({ info }) => {
+const DetailVideo = ({ info, Theme }) => {
   // console.log(info);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [click, setClick] = useState(false);
   const [likebtn, setLikeBtn] = useState(false);
   const [dislikebtn, setDisLikeBtn] = useState(false);
   const toggleDescription = () => {
-    setIsDescriptionExpanded(!isDescriptionExpanded); 
+    setIsDescriptionExpanded(!isDescriptionExpanded);
   };
   const title = info[0]?.snippet?.localized?.title;
   const channelTitle = info[0]?.snippet?.channelTitle;
@@ -46,14 +46,18 @@ const DetailVideo = ({ info }) => {
         </div>
         {!click ? (
           <button
-            className="px-3 m-2 pb-1 bg-black text-white rounded-2xl"
+            className={`px-3 m-2 pb-1  rounded-2xl ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => setClick(true)}
           >
             <span className="text-base">subscribe </span>
           </button>
         ) : (
           <button
-            className="px-3 m-2 pb-1 bg-white text-black rounded-2xl"
+            className={`px-3 m-2 pb-1  rounded-2xl ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => setClick(false)}
           >
             <div className="flex justify-between">
@@ -66,9 +70,11 @@ const DetailVideo = ({ info }) => {
         )}
         {!likebtn ? (
           <button
-            className={`bg-gray-100 p-2 rounded-l-full text-sm m-2 ${
+            className={` p-2 rounded-l-full text-sm m-2 ${
               click ? "ml-[29.8rem]" : "ml-[31.7rem]"
-            } flex`}
+            } flex ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => [
               setLikeBtn(true),
               dislikebtn ? setDisLikeBtn(false) : null,
@@ -84,7 +90,9 @@ const DetailVideo = ({ info }) => {
           <button
             className={`bg-gray-100 p-2 rounded-l-full text-sm m-2 ${
               click ? "ml-[29.8rem]" : "ml-[31.7rem]"
-            } flex`}
+            } flex ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => [setLikeBtn(false)]}
           >
             <span className="pt-1 pr-1">
@@ -96,7 +104,9 @@ const DetailVideo = ({ info }) => {
         )}
         {!dislikebtn ? (
           <button
-            className="bg-gray-100 flex items-center rounded-r-full w-8 h-[2.2rem] mt-[0.5rem] text-sm"
+            className={`flex items-center rounded-r-full w-8 h-[2.2rem] mt-[0.5rem] text-sm ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => [
               setDisLikeBtn(true),
               likebtn ? setLikeBtn(false) : null,
@@ -108,7 +118,9 @@ const DetailVideo = ({ info }) => {
           </button>
         ) : (
           <button
-            className="bg-gray-100 flex items-center rounded-r-full w-8 h-[2.2rem] mt-[0.5rem] text-sm"
+            className={`flex items-center rounded-r-full w-8 h-[2.2rem] mt-[0.5rem] text-sm ${
+              !Theme ? "bg-gray-100 text-black" : "bg-gray-900 text-white"
+            }`}
             onClick={() => [setDisLikeBtn(false)]}
           >
             <span className="p-2">
@@ -117,7 +129,7 @@ const DetailVideo = ({ info }) => {
           </button>
         )}
       </div>
-      <div className="bg-gray-100 rounded-lg">
+      <div className={`bg-gray-100 rounded-lg ${!Theme ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
         <div className="flex mt-5 font-semibold">
           <p className=" p-1">{view} views</p>
           <p className="p-1">{date}</p>
