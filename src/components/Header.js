@@ -122,7 +122,7 @@ const Header = () => {
                   {suggestionText.map((s) => (
                     <Link key={s} to={"/search/" + s}>
                       <li
-                        className="py-1 px-2 shadow-sm hover:bg-gray-100"
+                        className={`py-1 px-2 shadow-sm  ${!Theme ? "hover:bg-gray-800" : "hover:bg-gray-100"}`}
                         onClick={() => {
                           getData(s);
                         }}
