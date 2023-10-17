@@ -98,6 +98,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search"
+              value={searchText}
               className={`border border-gray-400 w-1/2 p-1 px-3 m-1 rounded-l-full ${!Theme ? "bg-black": ""}`}
               onChange={(e) => setSearchText(e.target.value)}
               onFocus={() => setSuggestion(true)}
@@ -124,7 +125,8 @@ const Header = () => {
                       <li
                         className={`py-1 px-2 shadow-sm  ${!Theme ? "hover:bg-gray-800" : "hover:bg-gray-100"}`}
                         onClick={() => {
-                          getData(s);
+                          // getData(s);
+                          setSearchText('')
                         }}
                       >
                         {s}
