@@ -1,59 +1,13 @@
 import React, { useState } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-// const CommentsShow = ({ info }) => {
-//   // const [reply, setReply] = useState(replies);
-//   const { snippet } = info;
 
-//   const { topLevelComment } = snippet;
-
-//   const { authorDisplayName, authorProfileImageUrl, textOriginal } = snippet;
-
-//   return (
-//     <div>
-//       <div className="flex p-1">
-//         {snippet?.topLevelComment ? (
-//           <>
-//             <img
-//               className="p-1 rounded-full w-10 h-10"
-//               alt="authorProfileImageUrl"
-//               src={topLevelComment?.snippet?.authorProfileImageUrl}
-//             />
-//             <div className="px-2 py-2">
-//               <p className="font-semibold text-sm">
-//                 {topLevelComment?.snippet?.authorDisplayName}
-//               </p>
-//               <p className="text-sm">
-//                 {topLevelComment?.snippet?.textOriginal}
-//               </p>
-//               {/* <div className="border"></div> */}
-//             </div>
-//           </>
-//         ) : (
-//           <>
-//             <img
-//               className="p-1 rounded-full w-10 h-10"
-//               alt="authorProfileImageUrl"
-//               src={authorProfileImageUrl}
-//             />
-//             <div className="px-2">
-//               <p className="font-semibold text-sm">{authorDisplayName}</p>
-//               <p className="text-sm"> {textOriginal}</p>
-//               {/* <div className="border"></div> */}
-//             </div>
-//           </>
-//         )}
-//       </div>
-//       {/* <div className="border"></div> */}
-
-//     </div>
-//   );
-// };
-
-const CommentsShow = ({ info }) => {
+const CommentsShow = ({ info,Theme }) => {
   const { snippet } = info;
   const { topLevelComment } = snippet;
   const { authorDisplayName, authorProfileImageUrl, textOriginal } = snippet;
+ 
+
 
   // State variable to track whether replies should be visible
   const [showReplies, setShowReplies] = useState(false);
@@ -65,7 +19,7 @@ const CommentsShow = ({ info }) => {
 
   return (
     <div>
-      <div className="flex p-1 shadow-md">
+      <div className={`flex p-1 shadow-md ${!Theme && "bg-black"}`}>
         {snippet?.topLevelComment ? (
           <>
             <img
