@@ -2,10 +2,11 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   const isOnline = useOnline();
-
+  const Theme = useSelector(store => store.app.Theme)
   if (!isOnline) {
     return (
       <div className="flex items-center ml-[30rem] mt-60">
@@ -16,9 +17,8 @@ const Body = () => {
     );
   }
   return (
-    <div className="flex">
+    <div className={`flex ${!Theme ? 'bg-black': ''}`}>
       <Sidebar />
-
       <Outlet />
     </div>
   );
