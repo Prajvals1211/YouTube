@@ -43,7 +43,18 @@ export const SuggestShimmer = () => {
       {Array(25)
         .fill("")
         .map((e, i) => {
-          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>;
+          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>; //w-[350px]
+        })}
+    </div>
+  );
+};
+export const SearchPageShimmer = () => {
+  return (
+    <div>
+      {Array(25)
+        .fill("")
+        .map((e, i) => {
+          return <div className="w-[500px]  ml-[550px] h-20 m-2 bg-gray-200" key={i}></div>; //w-[350px]
         })}
     </div>
   );
