@@ -6,7 +6,9 @@ import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Maincontainer from "./components/Maincontainer";
 import Loader, { LoginName } from "./utils/loadContext";
+
 import { Suspense, lazy, useState } from "react";
+
 import {
   Shimmer,
   SuggestShimmer,
@@ -46,26 +48,28 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/login",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <LoginPage />
+          </Suspense>
+        ),
+      },
     ],
   },
-  {
-    path: "/login",
-    element: (
-      <Suspense fallback={<Shimmer />}>
-        <LoginPage />
-      </Suspense>
-    ),
-  },
+ 
 ]);
 
 function App() {
   const [Loading, setLoading] = useState(true);
   const [name, setName] = useState("");
+
   return (
     <Provider store={store}>
       <LoginName.Provider value={[name, setName]}>
         <Loader.Provider value={[Loading, setLoading]}>
-          <div className="">
+          <div>
             {/* <Header /> */}
 
             <RouterProvider router={appRouter} />
