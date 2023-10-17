@@ -15,6 +15,7 @@ const LiveChat = () => {
   const chatMessages = useSelector((store) => store.chat.messages);
   const [name] = useContext(LoginName);
   const navigate = useNavigate();
+  const Theme = useSelector(store => store.app.Theme)
 
   useEffect(() => {
     const live = setInterval(() => {
@@ -33,10 +34,10 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className=" border border-black rounded-lg ">
+      <div className={`border rounded-lg ${!Theme ? "border-white" : "border-black"} `}>
         {showchat && (
           <>
-            <div className=" w-full h-[500px]  p-2 bg-slate-100 mr-[12rem]  border-b-2 overflow-y-scroll flex flex-col-reverse">
+            <div className={`w-full h-[500px]  p-2 ${!Theme ? "bg-slate-900" : "bg-slate-100"}  mr-[12rem]  border-b-2 overflow-y-scroll flex flex-col-reverse`}>
               {chatMessages.map((message, index) => (
                 <ChatMessage
                   name={message.name}
@@ -72,7 +73,7 @@ const LiveChat = () => {
                 </button>
               </form>
             ) : (
-              <div className="p-1  bg-gray-300  text-center">
+              <div className={`p-1  bg-gray-300  text-center ${!Theme ? "text-black" : ""}`}>
                 <button
                   className=" rounded-md w-full flex items-center px-16"
                   onClick={() => {
@@ -80,14 +81,14 @@ const LiveChat = () => {
                     dispatch(addLoginName(search.get("v")));
                   }}
                 >
-                  <AiOutlineLock className="bg-gray-300 m-1" />
+                  <AiOutlineLock className={`bg-gray-300 m-1`} />
                   Please login to add comments
                 </button>
               </div>
             )}
           </>
         )}
-        <div className="rounded hover:bg-gray-200 w-full">
+        <div className={`rounded hover:bg-gray-200 w-full ${!Theme && "text-white hover:text-black" }`}>
           {showchat ? (
             <button
               className="w-full font-bold text-xs p-1 rounded"
