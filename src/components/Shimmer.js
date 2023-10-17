@@ -43,7 +43,7 @@ export const SuggestShimmer = () => {
       {Array(25)
         .fill("")
         .map((e, i) => {
-          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>; //w-[350px]
+          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>; 
         })}
     </div>
   );
