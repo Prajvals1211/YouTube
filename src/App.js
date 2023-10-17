@@ -11,7 +11,7 @@ import { Suspense, lazy, useState } from "react";
 
 import {
   Shimmer,
-  SuggestShimmer,
+  SearchPageShimmer,
   WatchPageShimmer,
 } from "./components/Shimmer";
 const WatchPage = lazy(() => import("./components/WatchPage"));
@@ -43,7 +43,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/search/:id",
         element: (
-          <Suspense fallback={<SuggestShimmer />}>
+          <Suspense fallback={<SearchPageShimmer />}>
             <SearchPage />
           </Suspense>
         ),
