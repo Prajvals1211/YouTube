@@ -6,12 +6,11 @@ import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Maincontainer from "./components/Maincontainer";
 import Loader, { LoginName } from "./utils/loadContext";
-
 import { Suspense, lazy, useState } from "react";
-
 import {
-  Shimmer,
+  LoginPageShimmer,
   SearchPageShimmer,
+  Shimmer,
   WatchPageShimmer,
 } from "./components/Shimmer";
 const WatchPage = lazy(() => import("./components/WatchPage"));
@@ -51,7 +50,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: (
-          <Suspense fallback={<Shimmer />}>
+          <Suspense fallback={<LoginPageShimmer />}>
             <LoginPage />
           </Suspense>
         ),
