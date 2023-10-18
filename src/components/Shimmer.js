@@ -9,10 +9,7 @@ export const Shimmer = () => {
           .map((e, i) => {
             return (
               <div key={i}>
-                <div
-                  
-                  className="w-[295px] p-2 m-2 h-44 bg-gray-200 rounded flex flex-wrap"
-                ></div>
+                <div className="w-[295px] p-2 m-2 h-44 bg-gray-200 rounded flex flex-wrap"></div>
                 <div>
                   <Shimmer1 />
                 </div>
@@ -43,7 +40,7 @@ export const SuggestShimmer = () => {
       {Array(25)
         .fill("")
         .map((e, i) => {
-          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>; 
+          return <div className="w-[350px] h-20 m-2 bg-gray-200" key={i}></div>; //w-[350px]
         })}
     </div>
   );
@@ -54,8 +51,20 @@ export const SearchPageShimmer = () => {
       {Array(25)
         .fill("")
         .map((e, i) => {
-          return <div className="w-[500px]  ml-[550px] h-20 m-2 bg-gray-200" key={i}></div>; //w-[350px]
+          return (
+            <div
+              className="w-[500px]  ml-[550px] h-20 m-2 bg-gray-200"
+              key={i}
+            ></div>
+          ); //w-[350px]
         })}
+    </div>
+  );
+};
+export const LoginPageShimmer = () => {
+  return (
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center w-full">
+      <div className="w-96 p-8 rounded-lg shadow-lg h-96"></div>
     </div>
   );
 };
