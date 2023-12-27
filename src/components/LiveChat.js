@@ -62,13 +62,13 @@ const LiveChat = () => {
                 }}
               >
                 <input
-                  className="w-72 p-2 outline-none "
+                  className={`w-72 p-2 outline-none ${!Theme ? "text-white bg-black" : ""}`}
                   type="text"
                   value={liveText}
                   placeholder="add a comment"
                   onChange={(e) => setLiveText(e.target.value)}
                 />
-                <button className="px-2 mx-2 bg-green-100 rounded-md">
+                <button className={`px-2 mx-2 ${!Theme ? "bg-green-600": "bg-green-100"} rounded-md`}>
                   Send
                 </button>
               </form>
